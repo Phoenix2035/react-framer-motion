@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const buttonVariants = {
+    hover: {
+        scale: 1.1,
+        textShadow: "0 0 8px rgb(255,255,255)",
+        boxShadow: "0 0 8px rgb(255,255,255)",
+        transition: {
+            duration: 0.3,
+            yoyo: Infinity
+        }
+    }
+}
+
 const Home = () => {
     return (
         <motion.div
@@ -13,11 +25,8 @@ const Home = () => {
 
             <Link to="/base">
                 <motion.button
-                    whileHover={{
-                        scale: 1.1,
-                        textShadow: "0 0 8px rgb(255,255,255)",
-                        boxShadow: "0 0 8px rgb(255,255,255)",
-                    }}
+                    variants={buttonVariants}
+                    whileHover="hover"
                 >
                     Create Your Pizza
                 </motion.button>
