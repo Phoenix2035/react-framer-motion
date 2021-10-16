@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect } from "react";
 
 import { motion } from "framer-motion";
 
@@ -21,9 +21,9 @@ const containerVariants = {
     exit: {
         x: "-100vw",
         transition: {
-            ease: "easeInOut"
-        }
-    }
+            ease: "easeInOut",
+        },
+    },
 };
 
 const childVariants = {
@@ -35,8 +35,12 @@ const childVariants = {
     },
 };
 
-const Order = ({ pizza }) => {
-
+const Order = ({ pizza, setShowModal }) => {
+    useEffect(() => {
+        setTimeout(() => {
+            setShowModal(true);
+        }, 5000);
+    }, [setShowModal]);
 
     return (
         <motion.div
