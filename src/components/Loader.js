@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, useCycle } from "framer-motion"
 
 const loaderVariants = {
     animationOne: {
@@ -15,18 +15,34 @@ const loaderVariants = {
                 duration: .25
             },
         }
+    },
+    animationTwo: {
+        x: 0,
+        y: [0, -40],
+        transition: {
+            y: {
+                yoyo: Infinity,
+                duration: .25,
+                ease: "easeOut"
+            }
+        }
     }
 }
 
 function Loader() {
+    const [animation, cycleAnimation] = useCycle("animationOne", "animationTwo")
     return (
         <>
             <motion.div className="loader"
                 variants={loaderVariants}
-                animate="animationOne"
+                animate={animation}
             >
 
             </motion.div>
+
+            <button onClick={() => cycleAnimation()}>
+                Change Loader
+            </button>
 
         </>
     )
